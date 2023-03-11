@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="4.0"
+  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+  <display-name>Spark</display-name>
+
+  <welcome-file-list>
+    <welcome-file>home</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/jsp/404ErrorPage.jsp</location>
+  </error-page>
+
+  <error-page>
+    <location>/jsp/errorPage.jsp</location>
+  </error-page>
+
+  <context-param>
+    <param-name>sparkFiles</param-name>
+    <param-value>/sparkFiles</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>sparkFilesAbsolutePath</param-name>
+    <param-value>C:\Program Files\apache-tomcat-9.0.59-windows-x64\apache-tomcat-9.0.59\webapps\sparkFiles</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>insertProductJsp</servlet-name>
+    <jsp-file>/jsp/insertProduct.jsp</jsp-file>
+    <multipart-config>
+      <max-file-size>5242880</max-file-size>
+      <max-request-size>26214400</max-request-size>
+      <file-size-threshold>1048576</file-size-threshold>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>insertProductJsp</servlet-name>
+    <url-pattern>/jsp/insertProduct.jsp</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>insertVersionJsp</servlet-name>
+    <jsp-file>/jsp/insertVersion.jsp</jsp-file>
+    <multipart-config>
+      <max-file-size>5242880</max-file-size>
+      <max-request-size>26214400</max-request-size>
+      <file-size-threshold>1048576</file-size-threshold>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>insertVersionJsp</servlet-name>
+    <url-pattern>/jsp/insertVersion.jsp</url-pattern>
+  </servlet-mapping>
+
+  <resource-ref>
+    <description>JNDI Data Source</description>
+    <res-ref-name>jdbc/SparkDB</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+</web-app>
